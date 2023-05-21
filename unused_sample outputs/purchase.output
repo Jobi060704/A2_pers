@@ -1,0 +1,61 @@
+Main Menu:
+    1.Display Items
+    2.Purchase Items
+    3.Save and Exit
+Administrator-Only Menu:
+    4.Add Item
+    5.Remove Item
+    6.Display Coins
+    7.Reset Stock
+    8.Reset Coins
+    9.Abort Program
+Select your option (1-9):
+
+Items Menu
+----------
+ID   |Name                                    | Available | Price
+-------------------------------------------------------------------
+I0002|Apple Pie                               |18         |$ 3.00
+I0003|Lemon Cheesecake                        |20         |$ 4.00
+I0004|Lemon Meringue Pie                      |20         |$ 3.00
+I0005|Lemon Tart                              |20         |$ 3.75
+I0001|Meat Pie                                |18         |$ 3.50
+
+Main Menu:
+    1.Display Items
+    2.Purchase Items
+    3.Save and Exit
+Administrator-Only Menu:
+    4.Add Item
+    5.Remove Item
+    6.Display Coins
+    7.Reset Stock
+    8.Reset Coins
+    9.Abort Program
+Select your option (1-9):
+
+Purchase Item
+-------------
+Please enter the id of the item you wish to purchase:
+
+You have selected "Meat Pie - Yummy Beef in ... by pastry". This will cost you $ 3.50.
+Please hand over the money - type in the value of each note/coin in cents.
+Press enter or ctrl-d on a new line to cancel this purchase:
+You still need to give us $3.50:
+You still need to give us $1.50:
+Error: $3.00 is not a valid denomination of money. Please try again.
+You still need to give us $1.50:
+Here is your Meat Pie and your change of $ 3.50: $2 $1 50c
+
+Main Menu:
+    1.Display Items
+    2.Purchase Items
+    3.Save and Exit
+Administrator-Only Menu:
+    4.Add Item
+    5.Remove Item
+    6.Display Coins
+    7.Reset Stock
+    8.Reset Coins
+    9.Abort Program
+Select your option (1-9):
