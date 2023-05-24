@@ -477,7 +477,7 @@ void removeItem(LinkedList *stockList) {
 }
 
 
- void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
+void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
 {
     Stock *chosenStock = nullptr;
     std::string tmp;
@@ -520,7 +520,7 @@ void removeItem(LinkedList *stockList) {
     std::cin.ignore(); // Flush the input's enter key
     while (total > 0)
     {
-        std::cout << "You still need to give us $" << total / 100 << ": ";
+        std::cout << "You still need to give us " << "\033[1;32m$" << total / 100 << "\033[0m :";
         std::getline(std::cin, tmp);
         // Pressed enter to cancel the purchase
         if (tmp == "help"){
