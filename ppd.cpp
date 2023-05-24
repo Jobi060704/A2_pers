@@ -133,6 +133,9 @@ int main(int argc, char **argv)
             isOver = true;
             outS("THE PROGRAM HAS BEEN ABORTED");
         } 
+        else if (choice == "help") { // aborthing the program
+            outS("Please enter a number from 1 to 9 for the dedicated action");
+        } 
         else {                  // Invalud input
             outS("Invalid input");
         }
@@ -489,7 +492,10 @@ void removeItem(LinkedList *stockList) {
         chosenStock = getStockById(stockList, tmp);
 
         // Check if the stock still available
-        if (chosenStock != nullptr && chosenStock->on_hand <= 0)
+        if (tmp == "help"){
+          std::cout << "You need to enter the exact id of an item to urchase. You can see available items with their IDs using command '1' in the menu.";
+        }
+        else if (chosenStock != nullptr && chosenStock->on_hand <= 0)
             std::cout << chosenStock->name << " cannot be purchased currently." << std::endl;
     } while (chosenStock == nullptr || chosenStock->on_hand <= 0);
 
@@ -517,19 +523,26 @@ void removeItem(LinkedList *stockList) {
         std::cout << "You still need to give us $" << total / 100 << ": ";
         std::getline(std::cin, tmp);
         // Pressed enter to cancel the purchase
-        if(tmp.empty())
+        if (tmp == "help"){
+          std::cout << "Please enter an ammount of money in cents such as (500 = $5 etc.)";
+        }
+        else{
+          if(tmp.empty())
             return;
-        input = stoi(tmp);
-        denomIdx = valueToDenom(input);
-        if (denomIdx == -1)
-        {
-            std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+          input = stoi(tmp);
+          denomIdx = valueToDenom(input);
+          if (denomIdx == -1)
+          {
+              std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+          }
+          else
+          {
+              total -= input;
+              tempCoins[denomIdx]++;
+          }
         }
-        else
-        {
-            total -= input;
-            tempCoins[denomIdx]++;
-        }
+
+        
     }
 
     // Join all coins to temp
