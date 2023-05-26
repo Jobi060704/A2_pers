@@ -57,7 +57,12 @@ int main(int argc, char **argv)
         testMode = false;
     }
     else{
-        std::cout << "Invalid argument use, please use the format of './ppd xyz.dat zyx.dat' or './ppd xyz.dat zyx.dat test.input test.actual_output' for test cases" << std::endl;
+        if (enhancementMode){
+          std::cout << "Invalid argument use, please use the format of './ppd xyz.dat zyx.dat' or './ppd xyz.dat zyx.dat test.input test.actual_output' for test cases" << std::endl;
+        }
+        else{
+          std::cout << "Invalid argument use" << std::endl;
+        }
         std::cout << std::endl;
         return EXIT_FAILURE;
     }
@@ -77,9 +82,14 @@ int main(int argc, char **argv)
     }
     if(testMode){
         if (!fileExists(testInputFile)) {
-        std::cout << "Input file not found, please check if file exists in the folder used." << std::endl;
-        return EXIT_FAILURE;
-    }
+          if (enhancementMode){
+            std::cout << "Input file not found, please check if file exists in the folder used." << std::endl;
+          }
+          else{
+            std::cout << "Input file not found" << std::endl;
+          }
+          return EXIT_FAILURE;
+        }
     }
 
     // creating a linkedList pointer for the purchase list
@@ -135,11 +145,16 @@ int main(int argc, char **argv)
             isOver = true;
             outS("THE PROGRAM HAS BEEN ABORTED");
         } 
-        else if (choice == "help") { // aborthing the program
+        else if (choice == "help" and enhancementMode) { // aborthing the program
             outS("Please enter a number from 1 to 9 for the dedicated action");
         } 
         else {                  // Invalud input
+          if (enhancementMode){
             outS("Invalid input, the input should be a number between 1 to 9 for each of the commands.");
+          }
+          else{
+            outS("Invalid input");
+          }
         }
     }
 
@@ -433,7 +448,12 @@ void addItem(LinkedList *stockList) {
   // test price input()
   if(!testPrice(temp_priceStr)){
     //std::cout << "Price for item doesnt match required format." << std::endl;
-    outS("Price for item doesnt match required format.");
+    if (enhancementMode){
+      outS("Price for item doesnt match required format, please format the price to xx.xx where x represents a digit.");
+    }
+    else{
+      outS("Price for item doesnt match required format.");
+    }
   }
   else{
     Stock *stock = new Stock();
@@ -494,7 +514,7 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
         chosenStock = getStockById(stockList, tmp);
 
         // Check if the stock still available
-        if (tmp == "help"){
+        if (tmp == "help" and enhancementMode){
           std::cout << "You need to enter the exact id of an item to urchase. You can see available items with their IDs using command '1' in the menu.";
         }
         else if (chosenStock != nullptr && chosenStock->on_hand <= 0)
@@ -522,10 +542,16 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
     std::cin.ignore(); // Flush the input's enter key
     while (total > 0)
     {
-        std::cout << "You still need to give us " << "\033[1;32m$" << total / 100 << "\033[0m :";
+        if (enhancementMode){
+          std::cout << "You still need to give us " << "\033[1;32m$" << total / 100 << "\033[0m :";
+        }
+        else{
+          std::cout << "You still need to give us $" << total / 100 << " :";
+        }
+        
         std::getline(std::cin, tmp);
         // Pressed enter to cancel the purchase
-        if (tmp == "help"){
+        if (tmp == "help" and enhancementMode){
           std::cout << "Please enter an ammount of money in cents such as (500 = $5 etc.)";
         }
         else{
@@ -535,7 +561,12 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
           denomIdx = valueToDenom(input);
           if (denomIdx == -1)
           {
-              std::cout << "Error: $" << input << " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again." << std::endl;
+              if (enhancementMode){
+                std::cout << "Error: $" << input << " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again." << std::endl;
+              }
+              else{
+                std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+              }
           }
           else
           {
