@@ -38,6 +38,8 @@ std::fstream testCoinOutputFile;
 
 bool inspectMode = false; // Change to see outbut both in file and console
 
+bool enhancementMode = true; // Change to switch between original and enhanced versions of the code
+
 /**
  * manages the running of the program, initialises data structures, loads
  * data, display the main menu, and handles the processing of options. 
@@ -55,7 +57,7 @@ int main(int argc, char **argv)
         testMode = false;
     }
     else{
-        std::cout << "Invalid argument use" << std::endl;
+        std::cout << "Invalid argument use, please use the format of './ppd xyz.dat zyx.dat' or './ppd xyz.dat zyx.dat test.input test.actual_output' for test cases" << std::endl;
         std::cout << std::endl;
         return EXIT_FAILURE;
     }
