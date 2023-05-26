@@ -14,12 +14,16 @@ public:
     void addSorted(Stock* stock);
     // returns the head
     Node* getHead();
+    // returns the end
+    Node* getEnd();
     // removes the node based on given id
     Node* removeById(std::string id);
 
 private:
     // the beginning of the list
     Node* head;
+    // the end of the list
+    Node* end;
     // how many nodes are there in the list?
     unsigned count;
 };

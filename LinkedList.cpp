@@ -2,6 +2,7 @@
 
 LinkedList::LinkedList() {
    head = nullptr;
+   end = nullptr;
    count = 0;
 }
 
@@ -22,6 +23,7 @@ void LinkedList::addSorted(Stock* stock) {
 	if (count == 0) {
 		head = new Node();
 		head->data = stock;
+		end = head;
 		count = 1;
 	}
     // if there are elements/nodes in the list
@@ -30,6 +32,7 @@ void LinkedList::addSorted(Stock* stock) {
 			Node* newNode = new Node();
 			newNode->data = stock;
 			newNode->next = head;
+			end = head->next;
 			head = newNode;
 			count++;
 		}
@@ -41,6 +44,7 @@ void LinkedList::addSorted(Stock* stock) {
 					Node* newNode = new Node();
 					newNode->data = stock;
 					current->next = newNode;
+					end = newNode;
 					count++;
 					inserted = true;
 				}
@@ -50,6 +54,7 @@ void LinkedList::addSorted(Stock* stock) {
 						newNode->data = stock;
 						newNode->next = current->next;
 						current->next = newNode;
+						end = newNode;
 						count++;
 						inserted = true;
 					}
@@ -63,6 +68,11 @@ void LinkedList::addSorted(Stock* stock) {
 // returns the head of the linked list
 Node* LinkedList::getHead() {
     return head;
+}
+
+// returns the end of the linked list
+Node* LinkedList::getEnd() {
+    return end;
 }
 
 
@@ -87,6 +97,7 @@ Node* LinkedList::removeById(std::string id) {
             }
             current = current->next;
         }
+		end = current;
     }
     return result;
 
