@@ -38,7 +38,7 @@ std::fstream testCoinOutputFile;
 
 bool inspectMode = false; // Change to see outbut both in file and console
 
-bool enhancementMode = true; // Change to switch between original and enhanced versions of the code
+bool enhancementMode = false; // Change to switch between original and enhanced versions of the code
 
 /**
  * manages the running of the program, initialises data structures, loads
@@ -144,6 +144,10 @@ int main(int argc, char **argv)
         else if (choice == "9") { // aborthing the program
             isOver = true;
             outS("THE PROGRAM HAS BEEN ABORTED");
+        } 
+        else if (choice == "e") { // aborthing the program
+            enhancementMode = true;
+            outS("Enchancements mode successfuly enabled");
         } 
         else if (choice == "help" and enhancementMode) { // aborthing the program
             outS("Please enter a number from 1 to 9 for the dedicated action");
@@ -350,7 +354,14 @@ void displayMenu() {
   //std::cout << "  9.Abort Program" << std::endl;
   outS("  9.Abort Program");
   //std::cout << "Select your option (1-9): ";
-  outS("Select your option (1-9): ");
+
+  outS("Or enter 'e' to enable enhancements mode");
+
+  if (enhancementMode){
+    outS("'help' to get help on choices");
+  }
+
+  outS("Select your option: ");
 }
 
 // displaying the items in the stock list
