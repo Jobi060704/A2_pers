@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     }
     if(testMode){
         if (!fileExists(testInputFile)) {
-        std::cout << "Input file not found" << std::endl;
+        std::cout << "Input file not found, please check if file exists in the folder used." << std::endl;
         return EXIT_FAILURE;
     }
     }
@@ -137,7 +137,7 @@ int main(int argc, char **argv)
             outS("Please enter a number from 1 to 9 for the dedicated action");
         } 
         else {                  // Invalud input
-            outS("Invalid input");
+            outS("Invalid input, the input should be a number between 1 to 9 for each of the commands.");
         }
     }
 
@@ -533,7 +533,7 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
           denomIdx = valueToDenom(input);
           if (denomIdx == -1)
           {
-              std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+              std::cout << "Error: $" << input << " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again." << std::endl;
           }
           else
           {
