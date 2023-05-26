@@ -515,32 +515,44 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
     Stock *chosenStock = nullptr;
     std::string tmp;
 
-    std::cout << "Purchase Item" << std::endl;
-    std::cout << "-------------" << std::endl;
+    // std::cout << "Purchase Item" << std::endl;
+    // std::cout << "-------------" << std::endl;
+
+    outS("Purchase Item");
+    outS("-------------");
 
     do
     {
-        std::cout << "Please enter the id of the item you wish to purchase: ";
-        std::cin >> tmp;
+        // std::cout << "Please enter the id of the item you wish to purchase: ";
+        // std::cin >> tmp;
+
+        outS("Please enter the id of the item you wish to purchase: ");
+        tmp = inpS();
+
         chosenStock = getStockById(stockList, tmp);
 
         // Check if the stock still available
         if (tmp == "help" and enhancementMode){
-          std::cout << "You need to enter the exact id of an item to urchase. You can see available items with their IDs using command '1' in the menu.";
+          // std::cout << "You need to enter the exact id of an item to urchase. You can see available items with their IDs using command '1' in the menu.";
+          outS("You need to enter the exact id of an item to urchase. You can see available items with their IDs using command '1' in the menu.");
         }
         else if (chosenStock != nullptr && chosenStock->on_hand <= 0)
-            std::cout << chosenStock->name << " cannot be purchased currently." << std::endl;
+            // std::cout << chosenStock->name << " cannot be purchased currently." << std::endl;
+            outS(chosenStock->name + " cannot be purchased currently.");
     } while (chosenStock == nullptr || chosenStock->on_hand <= 0);
 
     int dollars = chosenStock->price.dollars;
     int cents = chosenStock->price.cents;
     float total = dollars * 100 + cents;
 
-    std::cout << "You have selected \"" << chosenStock->description
-              << "\". This will cost you $ " << total/100 << "." << std::endl;
+    // std::cout << "You have selected \"" << chosenStock->description << "\". This will cost you $ " << total/100 << "." << std::endl;
+    // std::cout << "Please hand over the money - type in the value of each note/coin in cents." << std::endl;
+    // std::cout << "Press enter or ctrl-d on a new line to cancel this purchase:" << std::endl;
 
-    std::cout << "Please hand over the money - type in the value of each note/coin in cents." << std::endl;
-    std::cout << "Press enter or ctrl-d on a new line to cancel this purchase:" << std::endl;
+    outS("You have selected \"" + chosenStock->description + "\". This will cost you $ " + std::to_string(total/100) + ".");
+    outS("Please hand over the money - type in the value of each note/coin in cents.");
+    outS("Press enter or ctrl-d on a new line to cancel this purchase:");
+
 
     int input = 0;
     int denomIdx = -1;
@@ -554,16 +566,20 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
     while (total > 0)
     {
         if (enhancementMode){
-          std::cout << "You still need to give us " << "\033[1;32m$" << total / 100 << "\033[0m :";
+          if (!testMode){std::cout << "You still need to give us " << "\033[1;32m$" << total / 100 << "\033[0m :";}
+          else{outS("You still need to give us $" + std::to_string(total / 100) + " :");}
         }
         else{
-          std::cout << "You still need to give us $" << total / 100 << " :";
+          outS("You still need to give us $" + std::to_string(total / 100) + " :");
         }
         
-        std::getline(std::cin, tmp);
+        // std::getline(std::cin, tmp);
+
+        tmp = inpS();
         // Pressed enter to cancel the purchase
         if (tmp == "help" and enhancementMode){
-          std::cout << "Please enter an ammount of money in cents such as (500 = $5 etc.)";
+          // std::cout << "Please enter an ammount of money in cents such as (500 = $5 etc.)";
+          outS("Please enter an ammount of money in cents such as (500 = $5 etc.)");
         }
         else{
           if(tmp.empty())
@@ -573,10 +589,12 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
           if (denomIdx == -1)
           {
               if (enhancementMode){
-                std::cout << "Error: $" << input << " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again." << std::endl;
+                // std::cout << "Error: $" << input << " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again." << std::endl;
+                outS("Error: $" + std::to_string(input) + " is not a valid denomination of money. The input should be a number representing cents such as 500 = $5 etc. .Please try again.");
               }
               else{
-                std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+                // std::cout << "Error: $" << input << " is not a valid denomination of money. Please try again." << std::endl;
+                outS("Error: $" + std::to_string(input) + " is not a valid denomination of money. Please try again.");
               }
           }
           else
@@ -622,27 +640,30 @@ void purchaseItem(LinkedList *stockList, std::map<int, Coin> &coins)
     
     if (currDenomIdx < FIVE_CENTS)
     {
-        std::cout << "Changes cannot be made due to lack of available coins." << std::endl;
+        // std::cout << "Changes cannot be made due to lack of available coins." << std::endl;
+        outS("Changes cannot be made due to lack of available coins.");
         return;
     }
 
-    std::cout << "Here is your " << chosenStock->name;
+    std::string message_ret = "";
+
+    message_ret += "Here is your " + chosenStock->name;
     if (!coinsToBeReturned.empty())
     {
         // If there is a return, print changes from largest to lowest
-        std::cout << " and your change of $ " << -totalToBeReturned / 100 << ":";
+        message_ret += " and your change of $ " + std::to_string(-totalToBeReturned / 100) + ":";
 
         for (auto i = coinsToBeReturned.rbegin(); i != coinsToBeReturned.rend(); i++)
         {
             int value = denomToValue((Denomination)i->first);
             for (int j = 0; j < i->second; j++)
                 if (value >= 100)
-                    std::cout << " $" << value / 100;
+                    message_ret += " $" + std::to_string(value / 100);
                 else
-                    std::cout << " " << value << "c"; // cents use "c"
+                    message_ret += " " + std::to_string(value) + "c"; // cents use "c"
         }
     }
-    std::cout << std::endl;
+    outS(message_ret);
 
     chosenStock->on_hand--;
 
