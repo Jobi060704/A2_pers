@@ -1,0 +1,147 @@
+Index: 0: 
+	Card: Red 1
+Highest Card
+Index: 1: 
+	Card: Red 2
+Highest Card
+Index: 2: 
+	Card: Red 3
+Highest Card
+Index: 3: 
+	Card: Red 4
+Highest Card
+Index: 4: 
+	Card: Red 5
+Highest Card
+Index: 5: 
+	Card: Red 6
+Highest Card
+Index: 6: 
+	Card: Red 7
+Highest Card
+Index: 7: 
+	Card: Orange 1
+Most of one Number
+Index: 8: 
+	Card: Orange 2
+Most of one Number
+Index: 9: 
+	Card: Orange 3
+Most of one Number
+Index: 10: 
+	Card: Orange 4
+Most of one Number
+Index: 11: 
+	Card: Orange 5
+Most of one Number
+Index: 12: 
+	Card: Orange 6
+Most of one Number
+Index: 13: 
+	Card: Orange 7
+Most of one Number
+Index: 14: 
+	Card: Yellow 1
+Most of one Colour
+Index: 15: 
+	Card: Yellow 2
+Most of one Colour
+Index: 16: 
+	Card: Yellow 3
+Most of one Colour
+Index: 17: 
+	Card: Yellow 4
+Most of one Colour
+Index: 18: 
+	Card: Yellow 5
+Most of one Colour
+Index: 19: 
+	Card: Yellow 6
+Most of one Colour
+Index: 20: 
+	Card: Yellow 7
+Most of one Colour
+Index: 21: 
+	Card: Green 1
+Most Even Cards
+Index: 22: 
+	Card: Green 2
+Most Even Cards
+Index: 23: 
+	Card: Green 3
+Most Even Cards
+Index: 24: 
+	Card: Green 4
+Most Even Cards
+Index: 25: 
+	Card: Green 5
+Most Even Cards
+Index: 26: 
+	Card: Green 6
+Most Even Cards
+Index: 27: 
+	Card: Green 7
+Most Even Cards
+Index: 28: 
+	Card: Blue 1
+Most different Colours
+Index: 29: 
+	Card: Blue 2
+Most different Colours
+Index: 30: 
+	Card: Blue 3
+Most different Colours
+Index: 31: 
+	Card: Blue 4
+Most different Colours
+Index: 32: 
+	Card: Blue 5
+Most different Colours
+Index: 33: 
+	Card: Blue 6
+Most different Colours
+Index: 34: 
+	Card: Blue 7
+Most different Colours
+Index: 35: 
+	Card: Indigo 1
+Most Cards in a Row
+Index: 36: 
+	Card: Indigo 2
+Most Cards in a Row
+Index: 37: 
+	Card: Indigo 3
+Most Cards in a Row
+Index: 38: 
+	Card: Indigo 4
+Most Cards in a Row
+Index: 39: 
+	Card: Indigo 5
+Most Cards in a Row
+Index: 40: 
+	Card: Indigo 6
+Most Cards in a Row
+Index: 41: 
+	Card: Indigo 7
+Most Cards in a Row
+Index: 42: 
+	Card: Violet 1
+Most Cards below 4
+Index: 43: 
+	Card: Violet 2
+Most Cards below 4
+Index: 44: 
+	Card: Violet 3
+Most Cards below 4
+Index: 45: 
+	Card: Violet 4
+Most Cards below 4
+Index: 46: 
+	Card: Violet 5
+Most Cards below 4
+Index: 47: 
+	Card: Violet 6
+Most Cards below 4
+Index: 48: 
+	Card: Violet 7
+Most Cards below 4

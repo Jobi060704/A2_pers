@@ -1,0 +1,6 @@
+Card: Orange 2
+      Most of one Number
+Card: Yellow 3
+      Most of one Colour
+Card: Green 4
+      Most Even Cards
